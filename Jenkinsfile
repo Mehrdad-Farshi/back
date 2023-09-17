@@ -34,7 +34,7 @@ pipeline {
                     return env.male == 'true'
                 }
                 not {
-                    environment(name: "no_ci", value: "true") 
+                    environment(name: "no_ci", value: "false") 
                     }
             }
             steps {
