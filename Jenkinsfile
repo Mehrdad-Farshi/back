@@ -6,6 +6,7 @@ pipeline {
     environment{
         repo_name = 'back'
         male  = true
+        no_ci = none
     }
     stages {
         stage ('outside'){
