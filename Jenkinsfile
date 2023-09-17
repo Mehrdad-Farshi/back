@@ -3,9 +3,9 @@ pipeline {
     triggers {
     pollSCM('* * * * *')
     }
-    environment{
+    // environment{
 
-    }
+    // }
     stages {
         stage ('outside'){
             steps{
@@ -27,7 +27,7 @@ pipeline {
         stage('no_ci') {
             when{
                 not {
-                    environment(name: "no_ci", value: true) 
+                    environment(name: "no_ci", value: "true") 
                 }
             }
             steps {
