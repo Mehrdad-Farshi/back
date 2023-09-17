@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage ('outside'){
             steps{
-                catchError(bui  ldResult: 'SUCCESS', stageResult: 'FAILURE') { 
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') { 
                     script{
                         def merge_message = sh(returnStdout: true, script: 'git log -n 1 --pretty=%B').trim()
                         env.mergeCommitMessage = merge_message                         
