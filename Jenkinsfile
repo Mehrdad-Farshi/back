@@ -36,8 +36,9 @@ pipeline {
                     }
                 }
             }
-                steps {
-                    echo "no_ci : ${no_ci}"
-                }
+            steps {
+                echo "no_ci : ${no_ci}"
+            }
+        }
     }
 }
