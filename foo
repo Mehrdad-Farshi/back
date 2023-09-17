@@ -1,39 +1,45 @@
 pipeline {
     agent any
     triggers {
-    pollSCM('* * * * *')
+        pollSCM('* * * * *')
+    // pollSCM('H * * * THU')
     }
-    environment{
-        repo_name = 'back'
-        no_ci = false
+    environment {
+        // ansible_runner_dir = '/home/arjavand/mehrdad/runner'
+        ansible_runner_dir = '/home/arjavand/runner'
+        env.no_ci = false
+    }
 
-    }
     stages {
-        stage ('outside'){
+        stage('outside'){
             steps{
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') { 
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     script{
                         def merge_message = sh(returnStdout: true, script: 'git log -n 1 --pretty=%B').trim()
                         env.mergeCommitMessage = merge_message                         
                         def no_ciRegex = /.*\bno_ci\b.*/
+
                         if(mergeCommitMessage =~ no_ciRegex){
                             def no_citmp = true
                             env.no_ci = no_citmp
                         }
                     }
-
                 }
             }
-
         }
-        stage('no_ci') {
+
+        stage('log') {
             when{
-                expression{
+                expression {
                     return env.no_ci == 'false'
                 }
             }
             steps {
-                echo "no_ci : ${no_ci}"
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    dir("${ansible_runner_dir}") {
+                        sh 'ansible-playbook playbooks/applications.yml -e "app_name=log"'
+                    }
+                }
             }
         }
     }
