@@ -4,9 +4,7 @@ pipeline {
     pollSCM('* * * * *')
     }
     environment{
-        repo_name = 'back'
-        male  = true
-        no_ci = null
+
     }
     stages {
         stage ('outside'){
@@ -28,13 +26,8 @@ pipeline {
         }
         stage('no_ci') {
             when{
-                allOf {
-                    expression{
-                        return env.male == 'true'
-                    }
-                    not {
-                        environment(name: "no_ci", value: "true") 
-                    }
+                not {
+                    environment(name: "no_ci", value: true) 
                 }
             }
             steps {
