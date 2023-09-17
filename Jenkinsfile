@@ -5,7 +5,7 @@ pipeline {
     }
     environment{
         repo_name = 'back'
-        male  = false
+        male  = true
     }
     stages {
         stage ('outside'){
@@ -32,7 +32,7 @@ pipeline {
                         return env.male == 'true'
                     }
                     not {
-                        environment(name: "no_ci", value: "false") 
+                        environment(name: "no_ci", value: "true") 
                     }
                 }
             }
