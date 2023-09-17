@@ -5,7 +5,6 @@ pipeline {
     }
     environment{
         repo_name = 'back'
-        no_ci = true
         male  = true
 
 
