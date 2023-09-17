@@ -5,7 +5,9 @@ pipeline {
     }
     environment{
         repo_name = 'back'
-        no_ci = false
+        no_ci = true
+        male  = true
+
 
     }
     stages {
@@ -29,8 +31,11 @@ pipeline {
         stage('no_ci') {
             when{
                 expression{
-                    return env.no_ci == 'false'
+                    return env.male == 'true'
                 }
+                not {
+                    environment(name: "no_ci", value: "true") 
+                    }
             }
             steps {
                 echo "no_ci : ${no_ci}"
