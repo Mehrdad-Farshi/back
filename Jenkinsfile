@@ -31,7 +31,7 @@ pipeline {
                 }
             }
             steps {
-                echo "no_ci : ${no_ci}"
+                echo "hello no_ci "
             }
         }
     }
