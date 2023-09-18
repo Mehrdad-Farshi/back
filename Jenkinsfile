@@ -38,8 +38,10 @@ pipeline {
             post{
                 always {
                     slackSend channel: 'automation',
-                    message: "it was a success 😃 Build URL : 🔗${BUILD_URL} with git message :🗒${mergeCommitMessage}\
-                    commit from 💾${GIT_URL} repository Build Number : ${BUILD_NUMBER}",
+                    message: "${BUILD_NUMBER}😃 you can see more details in Console Output: 🔗${BUILD_URL}\
+                    with git message :🗒${mergeCommitMessage}\
+                    from 🗂${GIT_URL} repository it took ${BUILD_DURATION}
+                    Test Results: Passed - ${TEST_PASS_COUNT}, Failed - ${TEST_FAIL_COUNT}, Skipped - ${TEST_SKIP_COUNT}",
                     color: 'good',
                     teamDomain: 'arjavand',
                     tokenCredentialId: 'arjavnad-slack'
