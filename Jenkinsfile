@@ -44,8 +44,7 @@ pipeline {
                     tokenCredentialId: 'arjavnad-slack'
                 }
             }
-            }
-        
         }
+        
     }
 }
