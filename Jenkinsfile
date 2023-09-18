@@ -37,8 +37,8 @@ pipeline {
             }
             post{
                 always {
-                    slackSend channel: 'automation',message: "${BUILD_NUMBER} you can see more details in Console Output: 🔗${BUILD_URL} \
-                    git message :🗒${mergeCommitMessage}from \
+                    slackSend channel: 'automation',message: "${BUILD_NUMBER} you can see more details in Console Output: 🔗${BUILD_URL} \n
+                    git message :🗒${mergeCommitMessage}from \n
                     🗂${GIT_URL}",
                     color: 'good',
                     teamDomain: 'arjavand',
