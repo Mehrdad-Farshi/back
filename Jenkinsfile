@@ -35,12 +35,15 @@ pipeline {
             steps {
                 echo "hello no_ci "
             }
-            post {
+            post{
                 always {
-                        emailext body: 'salam app <> build shod ',
-                        subject: 'build number : app name :   ',
-                        to: 'meh1376@gmail.com'
+                    slackSend channel: 'automation',
+                    message: ${mergeCommitMessage},
+                    color: 'good',
+                    teamDomain: 'arjavand',
+                    tokenCredentialId: 'arjavnad-slack'
                 }
+            }
             }
         
         }
