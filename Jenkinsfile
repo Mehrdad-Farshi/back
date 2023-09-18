@@ -40,7 +40,7 @@ pipeline {
                     slackSend channel: 'automation',
                     message: "${BUILD_NUMBER}😃 you can see more details in Console Output: 🔗${BUILD_URL}\
                     with git message :🗒${mergeCommitMessage}\
-                    from 🗂${GIT_URL},
+                    from 🗂${GIT_URL}",
                     color: 'good',
                     teamDomain: 'arjavand',
                     tokenCredentialId: 'arjavnad-slack'
