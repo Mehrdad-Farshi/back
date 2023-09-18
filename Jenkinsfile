@@ -38,7 +38,7 @@ pipeline {
             post{
                 always {
                     slackSend channel: 'automation',
-                    message: ${mergeCommitMessage},
+                    message: "${mergeCommitMessage}",
                     color: 'good',
                     teamDomain: 'arjavand',
                     tokenCredentialId: 'arjavnad-slack'
