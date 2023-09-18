@@ -38,7 +38,11 @@ pipeline {
             post{
                 always {
                     slackSend channel: 'automation',
-                    message: "${mergeCommitMessage}",
+                    message: "it was a success 😃 \
+                    Build URL: ${BUILD_URL} 🔗\
+                    ${mergeCommitMessage}🗒 \
+                    with git commit ${GIT_COMMIT} from ${GIT_URL} repository 💾 \
+                    Build Number: ${BUILD_NUMBER}",
                     color: 'good',
                     teamDomain: 'arjavand',
                     tokenCredentialId: 'arjavnad-slack'
