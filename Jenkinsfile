@@ -44,6 +44,7 @@ pipeline {
                     color: 'good',
                     teamDomain: 'arjavand',
                     tokenCredentialId: 'arjavnad-slack'
+                    
                 }
             }
         }
