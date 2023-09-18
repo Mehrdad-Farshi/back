@@ -23,6 +23,8 @@ pipeline {
                 }
             }
 
+            
+
         }
         stage('no_ci') {
             when{
@@ -32,7 +34,15 @@ pipeline {
             }
             steps {
                 echo "hello no_ci "
+                post {
+                        always {
+                                emailext body: 'salam app <> build shod ',
+                                subject: 'build number : app name :   ',
+                                to: 'meh1376@gmail.com'
+                        }
+                   }
             }
+        
         }
     }
 }
